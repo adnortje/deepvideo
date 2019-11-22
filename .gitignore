@@ -1,0 +1,8 @@
+*
+!*/
+!*.py
+!deepvideo.ipynb
+!.gitignore
+!*.png
+!deepvideo_docker
+!README.md

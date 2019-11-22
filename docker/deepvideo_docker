@@ -1,0 +1,62 @@
+# DeepVideo Docker Image for Pytorch and Python 3.6.
+
+# Parent image
+FROM ufoym/deepo:pytorch-py36-cu90
+
+# Some tools (Python 3.6)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        less \
+        nano \
+        && \
+    python -m pip --no-cache-dir install --upgrade \
+        setuptools \
+        pip \
+        && \
+    python -m pip --no-cache-dir install --upgrade \
+        numpy \
+        scipy \
+        matplotlib \
+        pandas \
+        sympy \
+        ipython \
+        nose \
+        jupyter \
+	h5py \ 
+	sureal \
+ 	meson \
+        && \
+    python -m pip --no-cache-dir install --upgrade \
+        tensorboardX \
+    python -m pip --no-cache-dir install --upgrade \
+        scikit-image \
+    python -m pip --no-cache-dir install --upgrade \
+        scikit-video \
+    python -m pip --no-cache-dir install --upgrade \
+        Pillow \
+    python -m pip --no-cache-dir install --upgrade \
+        opencv-python \
+    python -m pip --no-cache-dir install --upgrade \
+        ffmpeg \
+    
+# VMAF
+git clone --depth 1 https://github.com/Netflix/vmaf.git /vmaf
+
+# setup environment
+ENV PYTHONPATH=/vmaf/python/src:/vmaf:$PYTHONPATH
+ENV PATH=/vmaf:/vmaf/src/libvmaf:$PATH
+
+# make vmaf
+RUN cd /vmaf && make
+
+# NVVL
+RUN pip install cmake
+RUN git clone https://github.com/NVIDIA/nvvl.git \
+    cd nvvl \
+    mkdir build && cd build \
+    cmake ..
+    make -j
+    make install
+
+# Working directory
+WORKDIR /home
