@@ -11,7 +11,8 @@ and compensation of flow-based methods.
 We also introduce 3D dynamic bit assignment to adapt to object displacements caused by motion, 
 yielding additional bit savings. 
 By replacing the optical flow-based block-motion algorithms found in an existing video codec with our learned inter-frame prediction model, our approach outperforms the standard H.264 and H.265 video codecs at low bitrates.
-A preprint of the full length article pertaining to this code is available on arXiv: https://arxiv.org/abs/1912.05193.
+A preprint of the full length article pertaining to this code is available on arXiv: 
+> https://arxiv.org/abs/1912.05193
 ### Inter-Frame Motion Compression Sample
 The following YouTube link compares our motion compression to that of H.264/5 at a low bitrate.
 > https://youtu.be/nV7mLPwOXTI
