@@ -23,4 +23,4 @@ I'll update and make it more usable in the near future.
 This code acts as a good basis for future projects in video compression.
 
 ## License
-This code is distributed under the Creative Commons Attribution-ShareAlike license.
+This code is distributed under the Creative Commons Zero v1.0 Universal license.
